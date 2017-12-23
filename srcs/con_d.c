@@ -71,7 +71,7 @@ void			put_zero_d(t_data *data)
 void			con_d(va_list args, t_data *data, char *format, int size)
 {
 	cast_nu_d(args, data, format, size);
-	set_flags(data, format, size);
+	set_flags(args, data, format, size);
 	set_print_d(data);
 	free(data->ori);
 }
@@ -80,7 +80,7 @@ void			con_bigd(va_list args, t_data *data, char *format, int size)
 {
 	set_cast(data, format, size);
 	data->ori = ft_itoa_max(va_arg(args, long int));
-	set_flags(data, format, size);
+	set_flags(args, data, format, size);
 	set_print_d(data);
 	free(data->ori);
 }

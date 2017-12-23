@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <wchar.h>
 # include <string.h>
-# define NB_CON	15
+# define NB_CON	16
 
 typedef enum	e_cast
 {
@@ -56,6 +56,7 @@ typedef struct	s_fu
 }				t_fu;
 
 void			con_d(va_list args, t_data *data, char *foamat, int size);
+void			con_b(va_list args, t_data *data, char *foamat, int size);
 void			con_bigd(va_list args, t_data *data, char *foamat, int size);
 void			con_i(va_list args, t_data *data, char *foamat, int size);
 void			con_c(va_list args, t_data *data, char *foamat, int size);
@@ -70,7 +71,7 @@ void			con_p(va_list args, t_data *data, char *foamat, int size);
 void			con_per(va_list args, t_data *data, char *foamat, int size);
 void			con_x(va_list args, t_data *data, char *foamat, int size);
 void			con_bigx(va_list args, t_data *data, char *foamat, int size);
-void			set_flags(t_data *fl, char *format, int size);
+void			set_flags(va_list args,t_data *data, char *format, int size);
 void			set_print_oxu_hash(t_data *data, char *pre_fix);
 void			set_print_d(t_data *data);
 void			put_zero_d(t_data *data);

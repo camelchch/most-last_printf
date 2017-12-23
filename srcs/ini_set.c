@@ -13,6 +13,13 @@
 #include "../libft/libft.h"
 #include "../includes/ft_printf.h"
 
+int				is_f(char c)
+{
+	return (c == 's' || c == 'S' || c == 'p' || c == 'd' || c == 'D' || \
+	c == 'i' || c == 'o' || c == 'O' || c == 'u' || c == 'U' || c == 'x' \
+	|| c == 'X' || c == 'c' || c == 'C' || c == 'b');
+}
+
 static	void	for_iniset(t_fu *set)
 {
 	set[7].c = 'c';
@@ -32,7 +39,8 @@ static	void	for_iniset(t_fu *set)
 	set[13].c = 'x';
 	set[13].func = con_x;
 	set[14].c = 'X';
-	set[14].func = con_bigx;
+	set[15].c = 'b';
+	set[15].func = con_b;
 }
 
 void			ini_set(t_fu *set, t_mark *m)

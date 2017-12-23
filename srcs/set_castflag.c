@@ -13,13 +13,6 @@
 #include "../libft/libft.h"
 #include "../includes/ft_printf.h"
 
-int				is_f(char c)
-{
-	return (c == 's' || c == 'S' || c == 'p' || c == 'd' || c == 'D' ||\
-			c == 'i' || c == 'o' || c == 'O' || c == 'u' || c == 'U' ||\
-			c == 'x' || c == 'X' || c == 'c' || c == 'C');
-}
-
 static	void	init(t_data *data)
 {
 	data->ori = NULL;
@@ -68,14 +61,33 @@ static	void	set_zero_flag(t_data *data, int *i, int *j, char *format)
 	{
 		if (ft_strchr("#-+ ", format[*i]))
 		{
-			data->flags[*j] = format[*i];
+			if (!(ft_strchr(data->flags, format[*i])))
+				data->flags[*j] = format[*i];
 			(*j)++;
 		}
 		(*i)++;
 	}
 }
 
-void			set_flags(t_data *data, char *format, int size)
+void			flags_star(va_list args, t_data *data, char	*format, int *i)
+{
+	if (format[*i] == '*')
+	{
+		data->width = va_arg(args, int);
+		(*i)++;
+		if (data->width < 0)
+		data->width = data->width * (-1);
+	}
+	else
+	{
+		data->precison = va_arg(args, int);
+		*i = *i + 2;
+		if (data->precison < 0)
+		data->precison = -1;
+	}
+}
+
+void			set_flags(va_list args, t_data *data, char *f, int size)
 {
 	int		i;
 	int		j;
@@ -84,18 +96,20 @@ void			set_flags(t_data *data, char *format, int size)
 	j = 0;
 	while (i < size && j < 10)
 	{
-		if (format[i] == '0')
+		if (f[i] == '0')
 		{
 			if (!(ft_strchr(data->flags, '0')))
 				data->flags[j++] = '0';
 			i++;
 		}
-		else if ('0' < format[i] && format[i] <= '9')
+		else if (!ft_strnchr(f, '.', i) && ('0' < f[i] && f[i] <= '9'))
 		{
-			data->width = ft_atoi(format + i);
-			i = i + nb_digit(format + i);
+			data->width = ft_atoi(f + i);
+			i = i + nb_digit(f + i);
 		}
+		else if (f[i] == '*' || (f[i] == '.' && f[i + 1] == '*'))
+			flags_star(args, data, f, &i);
 		else
-			set_zero_flag(data, &i, &j, format);
+			set_zero_flag(data, &i, &j, f);
 	}
 }

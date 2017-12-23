@@ -34,7 +34,7 @@ static	void	cast_nu_u(va_list args, t_data *data, char *format, int size)
 void			con_u(va_list args, t_data *data, char *format, int size)
 {
 	cast_nu_u(args, data, format, size);
-	set_flags(data, format, size);
+	set_flags(args, data, format, size);
 	set_print_oxu_hash(data, "");
 	free(data->ori);
 }
@@ -43,7 +43,7 @@ void			con_bigu(va_list args, t_data *data, char *format, int size)
 {
 	set_cast(data, format, size);
 	data->ori = ft_itoa_max(va_arg(args, unsigned long));
-	set_flags(data, format, size);
+	set_flags(args, data, format, size);
 	set_print_oxu_hash(data, "");
 	free(data->ori);
 }
