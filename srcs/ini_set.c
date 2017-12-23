@@ -39,6 +39,7 @@ static	void	for_iniset(t_fu *set)
 	set[13].c = 'x';
 	set[13].func = con_x;
 	set[14].c = 'X';
+	set[14].func = con_bigx;
 	set[15].c = 'b';
 	set[15].func = con_b;
 }

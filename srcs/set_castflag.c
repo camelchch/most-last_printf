@@ -62,11 +62,13 @@ static	void	set_zero_flag(t_data *data, int *i, int *j, char *format)
 		if (ft_strchr("#-+ ", format[*i]))
 		{
 			if (!(ft_strchr(data->flags, format[*i])))
+			{
 				data->flags[*j] = format[*i];
-			(*j)++;
+				*j = *j + 1;
+			}
 		}
-		(*i)++;
 	}
+	*i = *i + 1;
 }
 
 void			flags_star(va_list args, t_data *data, char	*format, int *i)
@@ -74,16 +76,16 @@ void			flags_star(va_list args, t_data *data, char	*format, int *i)
 	if (format[*i] == '*')
 	{
 		data->width = va_arg(args, int);
-		(*i)++;
+		*i = *i + 1;
 		if (data->width < 0)
-		data->width = data->width * (-1);
+			data->width = data->width * (-1);
 	}
 	else
 	{
 		data->precison = va_arg(args, int);
 		*i = *i + 2;
 		if (data->precison < 0)
-		data->precison = -1;
+			data->precison = -1;
 	}
 }
 
