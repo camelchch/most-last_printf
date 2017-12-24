@@ -11,13 +11,8 @@
 /* ************************************************************************** */
 
 #include <stdarg.h>
-#include <stdint.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include <wchar.h>
-#include <wctype.h>
 #include "../libft/libft.h"
 #include "../includes/ft_printf.h"
 

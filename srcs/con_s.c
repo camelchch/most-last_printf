@@ -68,8 +68,8 @@ void			con_s(va_list args, t_data *data, char *format, int size)
 {
 	wchar_t		*we;
 
-	set_cast(data, format, size);
 	set_flags(args, data, format, size);
+	set_cast(data, format, size);
 	if (data->cast == l)
 	{
 		we = va_arg(args, wchar_t *);
@@ -94,7 +94,7 @@ void			con_bigs(va_list args, t_data *data, char *format, int size)
 	wchar_t		*we;
 
 	we = va_arg(args, wchar_t *);
-	set_cast(data, format, size);
 	set_flags(args, data, format, size);
+	set_cast(data, format, size);
 	set_print_bigs(data, we);
 }

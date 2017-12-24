@@ -48,16 +48,16 @@ static	void	cast_nu_bigx(va_list args, t_data *data, char *format, int size)
 
 void			con_x(va_list args, t_data *data, char *format, int size)
 {
-	cast_nu_x(args, data, format, size);
 	set_flags(args, data, format, size);
+	cast_nu_x(args, data, format, size);
 	set_print_oxu_hash(data, "0x");
 	free(data->ori);
 }
 
 void			con_bigx(va_list args, t_data *data, char *format, int size)
 {
-	cast_nu_bigx(args, data, format, size);
 	set_flags(args, data, format, size);
+	cast_nu_bigx(args, data, format, size);
 	set_print_oxu_hash(data, "0X");
 	free(data->ori);
 }

@@ -20,6 +20,7 @@
 
 void			con_o(va_list args, t_data *data, char *format, int size)
 {
+	set_flags(args, data, format, size);
 	set_cast(data, format, size);
 	if (data->cast == z)
 		data->ori = itoa_base(va_arg(args, size_t), 10, 8);
@@ -31,13 +32,13 @@ void			con_o(va_list args, t_data *data, char *format, int size)
 		data->ori = itoa_base(va_arg(args, unsigned long long), 10, 8);
 	else if (data->cast == j)
 		data->ori = itoa_base(va_arg(args, uintmax_t), 10, 8);
-	set_flags(args, data, format, size);
 	set_print_oxu_hash(data, "0");
 	free(data->ori);
 }
 
 void			con_b(va_list args, t_data *data, char *format, int size)
 {
+	set_flags(args, data, format, size);
 	set_cast(data, format, size);
 	if (data->cast == z)
 		data->ori = itoa_base(va_arg(args, size_t), 10, 2);
@@ -49,16 +50,15 @@ void			con_b(va_list args, t_data *data, char *format, int size)
 		data->ori = itoa_base(va_arg(args, unsigned long long), 10, 2);
 	else if (data->cast == j)
 		data->ori = itoa_base(va_arg(args, uintmax_t), 10, 2);
-	set_flags(args, data, format, size);
 	set_print_oxu_hash(data, "0");
 	free(data->ori);
 }
 
 void			con_bigo(va_list args, t_data *data, char *format, int size)
 {
+	set_flags(args, data, format, size);
 	set_cast(data, format, size);
 	data->ori = itoa_base(va_arg(args, unsigned long), 10, 8);
-	set_flags(args, data, format, size);
 	set_print_oxu_hash(data, "0");
 	free(data->ori);
 }

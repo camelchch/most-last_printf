@@ -42,24 +42,24 @@ static	void	set_print_c(va_list args, t_data *data)
 
 void			con_c(va_list args, t_data *data, char *format, int size)
 {
-	set_cast(data, format, size);
 	set_flags(args, data, format, size);
+	set_cast(data, format, size);
 	set_print_c(args, data);
 }
 
 void			con_bigc(va_list args, t_data *data, char *format, int size)
 {
-	set_cast(data, format, size);
 	set_flags(args, data, format, size);
+	set_cast(data, format, size);
 	data->cast = l;
 	set_print_c(args, data);
 }
 
 void			con_p(va_list args, t_data *data, char *format, int size)
 {
+	set_flags(args, data, format, size);
 	set_cast(data, format, size);
 	data->ori = itoa_hex(va_arg(args, unsigned long), 'x');
-	set_flags(args, data, format, size);
 	add_hash_p(data);
 	if (data->ori[0] != '0')
 		set_print_oxu_hash(data, "0x");
@@ -83,8 +83,8 @@ void			con_p(va_list args, t_data *data, char *format, int size)
 void			con_per(va_list args, t_data *data, char *format, int size)
 {
 	(void)args;
-	set_cast(data, format, size);
 	set_flags(args, data, format, size);
+	set_cast(data, format, size);
 	data->ori = "%";
 	data->len = max_2(1, data->width);
 	if (ft_strchr(data->flags, '-'))

@@ -13,9 +13,7 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdint.h>
-# include <stdarg.h>
 # include <wchar.h>
-# include <string.h>
 # define NB_CON	16
 
 typedef enum	e_cast

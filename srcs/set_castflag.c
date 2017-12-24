@@ -27,7 +27,6 @@ static	void	init(t_data *data)
 
 void			set_cast(t_data *data, char *format, int size)
 {
-	init(data);
 	if (ft_strnchr(format, 'h', size))
 	{
 		if (ft_strnchr_double(format, 'h', size))
@@ -96,6 +95,7 @@ void			set_flags(va_list args, t_data *data, char *f, int size)
 
 	i = 1;
 	j = 0;
+	init(data);
 	while (i < size && j < 10)
 	{
 		if (f[i] == '0')
